@@ -25,7 +25,7 @@ This is a boilerplate to start a django project with postgresql as database runn
 First clone the project.
 
 ```bash
-git clone https://github.com/hadiMh/Django_Docker_with_PostgreSql.git
+git clone https://github.com/Yasin-Dev-81/django_with_docker_and_allauth.git
 ```
 
 Then make sure Docker is running.
