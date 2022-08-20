@@ -1,0 +1,64 @@
+{% extends "_base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-9">
+                <div class="card shadow my-3 p-5">
+                    <h1>{% trans "Confirm E-mail Address" %}</h1>
+                    <div class="container mt-3">
+
+                        {% if confirmation %}
+
+                            {% user_display confirmation.email_address.user as user_display %}
+
+                            <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that
+                                <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user
+                                {{ user_display }}.{% endblocktrans %}</p>
+
+                            <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary mt-3">{% trans 'Confirm' %}</button>
+                            </form>
+
+                        {% else %}
+
+                            {% url 'account_email' as email_url %}
+
+                            <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please
+                                <a href="{{ email_url }}">issue a new e-mail confirmation request</a>
+                                .{% endblocktrans %}</p>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+
+                <div class="card my-4">
+                    <h5 class="card-header">About</h5>
+                    <div class="card-body">
+                        <p class="card-text">We love python and django. So we created a blog site to share our
+                            thoughts</p>
+                        <a href="#"
+                           class="btn btn-sm btn-danger">
+                            More...
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

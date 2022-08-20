@@ -1,0 +1,47 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    Logout
+{% endblock page_title %}
+
+{% block content %}
+{#    <form action="" method="post">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <button type="submit"> login</button>#}
+{#    </form>#}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-9">
+                <div class="card shadow my-3 p-5">
+                    <h3>Logout :</h3>
+                    <div class="container mt-3">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <table> {{ form|crispy }} </table>
+                            <p>Are you sure?</p>
+                            <button type="submit" class="btn btn-primary mt-3">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+
+                    <div class="card my-4">
+                        <h5 class="card-header">About</h5>
+                        <div class="card-body">
+                            <p class="card-text">We love python and django. So we created a blog site to share our
+                                thoughts</p>
+                            <a href="#"
+                               class="btn btn-sm btn-danger">
+                                More...
+                            </a>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
