@@ -37,6 +37,18 @@ Then in the project directory run this command:
 docker-compose up --build
 ```
 
+Then migrate
+
+```bash
+docker-compose exec web python manage.py migrate
+```
+
+and create super user
+
+```bash
+docker-compose exec web python manage.py createsuperuser
+```
+
 It will create two containers:
 One for Django and one for PostgresSql as the database for the project.
 All the required packages will be installed.
